@@ -32,6 +32,7 @@ const questions = [
     name: "initials",
     message: "Enter three characters please",
   },
+  // need to add color palette to both the text and the shape
   {
     type: "input",
     name: "color-text",
@@ -45,7 +46,7 @@ const questions = [
   {
     type: "list",
     name: "shape",
-    message: "Choose your Image",
+    message: "Choose your image shape",
     Choices: ["Circle", "Sqaure", "Triangle"],
   },
 ];
@@ -53,6 +54,6 @@ const questions = [
 inquirer.prompt(questions).then(answers => {
   console.log(answers)
   fs.writeFile("logo.vg", generateMarkdown(answers), (error) => {
-    error ? console.log("Please fill all the information") : console.log("README generated")
+    error ? console.log("Please fill all the information") : console.log("Logo generated")
   })
 })
