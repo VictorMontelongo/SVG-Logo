@@ -20,7 +20,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const colorPalette = require("./colors-palette")
-const { Triangle, Square, Circle } = require("./lib/shapes");
+const Shapes = require("./lib/shapes");
 
 
 
@@ -45,7 +45,7 @@ const questions = [
   },
   {
     type: "list",
-    name: "shape",
+    name: "shapes",
     message: "Choose your image shape",
     choices: ["Circle", "Sqaure", "Triangle"],
   },
