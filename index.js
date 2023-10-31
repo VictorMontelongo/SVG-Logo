@@ -34,12 +34,12 @@ const questions = [
   },
   // need to add color palette to both the text and the shape
   {
-    type: "input",
+    type: "list",
     name: "color-text",
     message: "Enter a color keyword for text color",
   },
   {
-    type: "input",
+    type: "list",
     name: "color-shape",
     message: "Enter a color for the shape",
   },
@@ -54,6 +54,6 @@ const questions = [
 inquirer.prompt(questions).then(answers => {
   console.log(answers)
   fs.writeFile("logo.svg", (answers), (error) => {
-    error ? console.log("Please fill all the information") : console.log("Logo generated")
+    error ? console.log("Whoops") : console.log("Logo generated")
   })
 })
