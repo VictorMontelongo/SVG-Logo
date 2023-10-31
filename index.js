@@ -51,6 +51,8 @@ const questions = [
   },
 ];
 
+
+
 inquirer.prompt(questions).then(answers => {
   console.log(answers)
   fs.writeFile("logo.svg", (answers), (error) => {
