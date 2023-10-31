@@ -19,8 +19,8 @@
 
 const inquirer = require("inquirer");
 const fs = require("fs");
-const Shapes = require("./lib/shapes")
 const colorPalette = require("./colors-palette")
+const { Triangle, Square, Circle } = require("./lib/shapes");
 
 
 
@@ -29,7 +29,7 @@ const colorPalette = require("./colors-palette")
 const questions = [
   {
     type: "input",
-    name: "initials",
+    name: "text",
     message: "Enter three characters please",
   },
   // need to add color palette to both the text and the shape
@@ -47,13 +47,13 @@ const questions = [
     type: "list",
     name: "shape",
     message: "Choose your image shape",
-    Choices: ["Circle", "Sqaure", "Triangle"],
+    choices: ["Circle", "Sqaure", "Triangle"],
   },
 ];
 
 inquirer.prompt(questions).then(answers => {
   console.log(answers)
-  fs.writeFile("logo.vg", generateMarkdown(answers), (error) => {
+  fs.writeFile("logo.svg", (answers), (error) => {
     error ? console.log("Please fill all the information") : console.log("Logo generated")
   })
 })
