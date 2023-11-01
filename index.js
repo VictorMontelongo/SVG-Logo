@@ -25,6 +25,23 @@ const Shapes = require("./lib/shapes");
 
 
 
+function setShape(answers) {
+
+  if (answers.shape === "Circle") {
+    let userShape = new Circle(answers.colorShape, answers.text, answers.colorText)
+    return userShape.render()
+  }
+
+  if (answers.shape === "Square") {
+    let userShape = new Square(answers.colorShape, answers.text, answers.colorText)
+    return userShape.render()
+  }
+
+  if (answers.shape === "Triangle") {
+    let userShape = new Triangle(answers.colorShape, answers.text, answers.colorText)
+    return userShape.render()
+  }
+};
 // Questions to generate the logo design
 const questions = [
   {
@@ -34,18 +51,18 @@ const questions = [
   },
   // need to add color palette to both the text and the shape
   {
-    type: "list",
+    type: "input",
     name: "color-text",
     message: "Enter a color keyword for text color",
   },
   {
-    type: "list",
+    type: "input",
     name: "color-shape",
     message: "Enter a color for the shape",
   },
   {
     type: "list",
-    name: "shapes",
+    name: "shape",
     message: "Choose your image shape",
     choices: ["Circle", "Sqaure", "Triangle"],
   },
@@ -54,8 +71,7 @@ const questions = [
 
 
 inquirer.prompt(questions).then(answers => {
-  console.log(answers)
-  fs.writeFile("logo.svg", (answers), (error) => {
+  fs.writeFile("logo.svg", setShape(answers), (error) => {
     error ? console.log("Whoops") : console.log("Logo generated")
   })
 })
