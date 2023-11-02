@@ -19,9 +19,11 @@
 
 const inquirer = require("inquirer");
 const fs = require("fs");
-const colorPalette = require("./colors-palette")
+const colorPalette = require("./lib/colors-palette")
 const Shapes = require("./lib/shapes");
-
+const Circle = require("./lib/circle");
+const Square = require("./lib/square");
+const Triangle = require("./lib/triangle")
 
 
 
@@ -32,12 +34,12 @@ function setShape(answers) {
     return userShape.render()
   }
 
-  if (answers.shape === "Square") {
+  else if (answers.shape === "Square") {
     let userShape = new Square(answers.colorShape, answers.text, answers.colorText)
     return userShape.render()
   }
 
-  if (answers.shape === "Triangle") {
+  else if (answers.shape === "Triangle") {
     let userShape = new Triangle(answers.colorShape, answers.text, answers.colorText)
     return userShape.render()
   }
@@ -54,11 +56,29 @@ const questions = [
     type: "input",
     name: "color-text",
     message: "Enter a color keyword for text color",
+    validate: (answer) => {
+      let answerLowercase = answer.toLowerCase();
+      for (var i = 0, len = colorPalette.length; i < len; ++i) {
+        if (answerLowercase.indexOf(colorPalette[i]) != -1) {
+          return true;
+        }
+      }
+      return console.log("Please enter a valid color")
+    }
   },
   {
     type: "input",
     name: "color-shape",
     message: "Enter a color for the shape",
+    validate: (answer) => {
+      let answerLowercase = answer.toLowerCase();
+      for (var i = 0, len = colorPalette.length; i < len; ++i) {
+        if (answerLowercase.indexOf(colorPalette[i]) != -1) {
+          return true;
+        }
+      }
+      return console.log("Please enter a valid color")
+    }
   },
   {
     type: "list",
@@ -66,12 +86,13 @@ const questions = [
     message: "Choose your image shape",
     choices: ["Circle", "Sqaure", "Triangle"],
   },
+
 ];
-
-
 
 inquirer.prompt(questions).then(answers => {
   fs.writeFile("logo.svg", setShape(answers), (error) => {
     error ? console.log("Whoops") : console.log("Logo generated")
   })
 })
+
+
