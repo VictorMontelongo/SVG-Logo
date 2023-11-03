@@ -27,13 +27,9 @@
     
   ## Tests
     -See video attached to view the application test.
+  [SVG logo.webm](https://github.com/VictorMontelongo/SVG-Logo/assets/82343047/ca8ea38f-3929-46f9-93b7-066d852e1fd9)
 
-    [SVG video.webm](https://github.com/VictorMontelongo/SVG-Logo/assets/82343047/3e8cdd8c-0bc4-409c-b6bb-ff483a9687d2)
-
-
-
-  
-
+    
   ## Questions
     If you have any questions about this project. Please reach me at victormontelongo@email.com. You can also find my work for this project and others at my GitHub profile [Victor Montelongo](https://github.com/Victor Montelongo) repo(https://github.com/VictorMontelongo/SVG-Logo)
   
