@@ -20,14 +20,14 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const colorPalette = require("./lib/colors-palette")
-const Shapes = require("./lib/shapes");
+// const Shapes = require("./lib/shapes");
 const Circle = require("./lib/circle");
 const Square = require("./lib/square");
 const Triangle = require("./lib/triangle")
 
 
 
-function setShape(answers) {
+function generateShape(answers) {
 
   if (answers.shape === "Circle") {
     let userShape = new Circle(answers.colorShape, answers.text, answers.colorText)
@@ -47,19 +47,26 @@ function setShape(answers) {
 // Questions to generate the logo design
 const questions = [
   {
-    type: "input",
     name: "text",
+    type: "input",
     message: "Enter three characters please",
+    // verify they only enter 3 characters
+    validate: (answer) => {
+      if (answer.length > 3) {
+        return console.log("\n Text must be three characters or less! Please try again");
+      }
+      return true;
+    }
   },
-  // need to add color palette to both the text and the shape
+  // needed to add color palette to both the text and the shape
   {
+    name: "colorText",
     type: "input",
-    name: "color-text",
     message: "Enter a color keyword for text color",
-    validate: (answer) => {
-      let answerLowercase = answer.toLowerCase();
+    validate: (answers) => {
+      let answersLowercase = answers.toLowerCase();
       for (var i = 0, len = colorPalette.length; i < len; ++i) {
-        if (answerLowercase.indexOf(colorPalette[i]) != -1) {
+        if (answersLowercase.indexOf(colorPalette[i]) != -1) {
           return true;
         }
       }
@@ -67,13 +74,13 @@ const questions = [
     }
   },
   {
+    name: "colorShape",
     type: "input",
-    name: "color-shape",
     message: "Enter a color for the shape",
-    validate: (answer) => {
-      let answerLowercase = answer.toLowerCase();
+    validate: (answers) => {
+      let answersLowercase = answers.toLowerCase();
       for (var i = 0, len = colorPalette.length; i < len; ++i) {
-        if (answerLowercase.indexOf(colorPalette[i]) != -1) {
+        if (answersLowercase.indexOf(colorPalette[i]) != -1) {
           return true;
         }
       }
@@ -81,16 +88,16 @@ const questions = [
     }
   },
   {
-    type: "list",
     name: "shape",
+    type: "list",
     message: "Choose your image shape",
-    choices: ["Circle", "Sqaure", "Triangle"],
+    choices: ["Circle", "Square", "Triangle"],
   },
 
 ];
 
 inquirer.prompt(questions).then(answers => {
-  fs.writeFile("logo.svg", setShape(answers), (error) => {
+  fs.writeFile(answers.shape + ".svg", generateShape(answers), (error) => {
     error ? console.log("Whoops") : console.log("Logo generated")
   })
 })
