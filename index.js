@@ -98,7 +98,7 @@ const questions = [
 
 inquirer.prompt(questions).then(answers => {
   fs.writeFile(answers.shape + ".svg", generateShape(answers), (error) => {
-    error ? console.log("Whoops") : console.log("Logo generated")
+    error ? console.log("Whoops") : console.log("Generated logo.svg")
   })
 })
 

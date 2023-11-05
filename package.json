@@ -2,5 +2,20 @@
   "dependencies": {
     "inquirer": "^8.2.4",
     "jest": "^29.7.0"
-  }
+  },
+  "name": "unit-10-logo",
+  "description": "- The project is intented to create a logo with full allowing the creation of text, text color, shape (circle, square, ane triangle), and its color shape.   - By users providing answers to some brief questions they can create a logo they could use for any type of applications in business, sports, or just personal use.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
