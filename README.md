@@ -23,7 +23,7 @@
     -JavaScript,Node.Js
   
   ## License
-    -
+    - None
     
   ## Tests
     -See video attached to view the application test.
