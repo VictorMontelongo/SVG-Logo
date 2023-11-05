@@ -27,7 +27,8 @@
     
   ## Tests
     -See video attached to view the application test.
-  [SVG logo.webm](https://github.com/VictorMontelongo/SVG-Logo/assets/82343047/ca8ea38f-3929-46f9-93b7-066d852e1fd9)
+  [SVG LOGO take 2.webm](https://github.com/VictorMontelongo/SVG-Logo/assets/82343047/568bbfc2-5174-42c0-9bbd-18078ea27e58)
+
 
     
   ## Questions
